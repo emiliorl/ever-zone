@@ -8,6 +8,7 @@ const navItems = (props) =>
             <NavItem link="/">Dashboard</NavItem>
             <NavItem link="/about">About</NavItem>
             <NavItem link="/products">Products</NavItem>
+            <NavItem link="/cart">Cart</NavItem>
         </ul>
     )
 }

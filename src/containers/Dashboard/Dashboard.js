@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import Sales from '../../components/Sales/Sales'
+import React from 'react';
+import Sales from '../../components/Sales/Sales';
 
 const Dashboard = (props) =>
 {
-    const [salesProductsState, salesProductsSetState] = useState([
+    /* const [salesProductsState, salesProductsSetState] = useState([
         {
             id: 0,
             img: "https://images-na.ssl-images-amazon.com/images/I/716hxkzc4SL._SY445_.jpg",
@@ -46,12 +46,12 @@ const Dashboard = (props) =>
             title: "Lorem ipsum dolor sit amet",
             price: "$50"
         }    
-    ])
+    ]) */
 
     return(
         <>
             <h1>Dashboard</h1>
-            <Sales salesProducts={salesProductsState}/>
+            <Sales/>
         </>
     );
 }

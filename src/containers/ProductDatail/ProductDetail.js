@@ -1,10 +1,11 @@
-import React, {useEffect, useEffet, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const ProdutDetail = (props) =>{
-
+const ProductDetail = (props) =>
+{
     const [product, setProductState] = useState({});
     const productId = +props.match.params.productId;
-    const productDB = [
+    /* const productDB = [
         {
             id: 0,
             img: "https://images-na.ssl-images-amazon.com/images/I/716hxkzc4SL._SY445_.jpg",
@@ -46,33 +47,48 @@ const ProdutDetail = (props) =>{
             details: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!",
             title: "Lorem ipsum dolor sit amet",
             price: "$50"
-        }    
-    ];
+        }
+    ]; */
 
-    useEffect(()=>{
-
-        const p = (productDB.filter(p => p.id == productId))[0] || {};
+    /* useEffect(() => {
+        const p = (productDB.filter(p => p.id === productId))[0] || {};
         setProductState({...p});
+    }, []); */
 
+    useEffect(() => {
+        axios.get('https://swapi.dev/api/films/'+ productId)
+        .then(response => {
+            const productInfo = response.data;
+            console.log(productId)
+            setProductState({...productInfo})
+        })
     }, []);
 
-    let objectInfo = <div style={{textAlign:"center"}}><h1>Product not found</h1></div>
-    if(Object.entries(product).length !== 0){
+    let objectInfo = <div style={{textAlign: "center"}}><h1>Product not found...</h1></div>;
+    if(Object.entries(product).length !== 0)
+    {
         objectInfo = (
-            <div style={{textAlign:"center"}}>
+            <div style={{textAlign: "center"}}>
                 <h1>{product.title}</h1>
-                <img src={product.img} alt="product"/>
-                <h2>{product.details}</h2>
+                <h1>{product.episode_id}</h1>
+                <h2>{product.director}</h2>
+                <h3>{product.opening_crawl}</h3>
+                <ul style={{listStyleType: 'none'}}>
+                    {product.characters}
+                </ul> 
+                <ul style={{listStyleType: 'none'}}>
+                    {product.starships}
+                </ul> 
             </div>
-        )
+        );
     }
+
     return (
         <>
-            <h1>Poduct detail</h1>
+            <h1>Product detail</h1>
             {objectInfo}
         </>
     );
-
 }
 
-export default ProdutDetail
+export default ProductDetail;
