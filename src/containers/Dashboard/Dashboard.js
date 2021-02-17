@@ -50,7 +50,7 @@ const Dashboard = (props) =>
 
     return(
         <>
-            <h1>Dashboard</h1>
+            <h1>Characters</h1>
             <Sales/>
         </>
     );

@@ -26,14 +26,15 @@ const Sales = (props) =>{
     });
 
     useEffect(() => {
-        axios.get('https://swapi.dev/api/films')
+        axios.get('https://rickandmortyapi.com/api/character')
         .then(response => {
             let productInfo = response.data.results;
             productInfo = productInfo.map(product => ( {
-                title: product.title,
-                episode_id: product.episode_id,
-                opening_crawl: product.opening_crawl,
-                characters: [...product.characters]
+                name: product.name,
+                id: product.id,
+                image: product.image,
+                species: product.species,
+                episode: [...product.episode]
             }));
             salesProductsSetState({salesProducts: [...productInfo]})
         })
@@ -41,12 +42,12 @@ const Sales = (props) =>{
 
     const products = salesProductsState.salesProducts.map((m,i) => {
         return <Product 
-            key={m.episode_id}
-            characters={m.characters}
-            title={m.title}
-            movie_no={i+1}
-            episode_id={m.episode_id}
-            opening_crawl={m.opening_crawl}
+            key={m.id}
+            id={m.id}
+            name={m.name}
+            species={m.species}
+            image={m.image}
+            episode={m.episode}
         />
     });
 

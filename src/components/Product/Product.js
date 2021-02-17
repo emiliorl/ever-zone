@@ -1,5 +1,6 @@
 import classes from './Product.module.css';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import cartIcon from '../../Images/cartIcon.png';
 
 const product = (props) =>{
 
@@ -22,9 +23,8 @@ const product = (props) =>{
     ); */
 
     function addToCart(productId){
-        console.log(productId);
         localStorage.setObj('item '+ productId, productId)
-/*         localStorage.setObj('Quantity item '+ productId, productId)
+/*      localStorage.setObj('Quantity item '+ productId, productId)
  */    }
 
     Storage.prototype.setObj = function(key, obj) {
@@ -46,19 +46,24 @@ const product = (props) =>{
     return(
     <div className={classes.ProductCard}>
         <div className={classes.ProductDetails}>
-            <h1>{props.title}</h1>
-            <h3>{props.episode_id}</h3>
+            <div className={classes.ProductTumb}>
+                <img src={props.image} alt={props.name}/>
+            </div>
+            <h1>{props.name}</h1>
+            <h3>{props.species}</h3>
             <div className={classes.ProductBottomDetails}>
-                <p>{props.opening_crawl}</p>
-                {/* <ul style={{listStyleType: 'none'}}>
+                {/* <p>{props.opening_crawl}</p>
+                <ul style={{listStyleType: 'none'}}>
                     {characters}
                 </ul> */}
                 <div className={classes.ProductLinks}>
-                        <Link to={"/product/" + props.movie_no}>Comprar</Link>
-                </div>
-                <div className={classes.ProductLinks} onClick={() => addToCart(props.episode_id)}>
-                    <p href={"/product/"+props.episode_id}>Agregar al Carrito</p>
-                </div>
+                    <div>
+                        <img src={cartIcon} alt="" className={classes.icon} onClick={() => addToCart(props.id)} />
+                    </div>
+                    <div>
+                        <Link to={"/product/" + props.id}>Comprar</Link>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>)

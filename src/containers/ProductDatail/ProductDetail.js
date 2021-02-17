@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 const ProductDetail = (props) =>
 {
@@ -55,16 +56,24 @@ const ProductDetail = (props) =>
         setProductState({...p});
     }, []); */
 
-    useEffect(() => {
-        axios.get('https://swapi.dev/api/films/'+ productId)
+    /* useEffect(() => {
+        axios.get('https://rickandmortyapi.com/api/character/'+ productId)
         .then(response => {
             const productInfo = response.data;
             console.log(productId)
             setProductState({...productInfo})
         })
+    }, []); */
+
+    useEffect(() => {
+        axios.get('https://rickandmortyapi.com/api/character/'+ productId)
+        .then(response => {
+            const productInfo = response.data;
+            setProductState({...productInfo})
+        })
     }, []);
 
-    let objectInfo = <div style={{textAlign: "center"}}><h1>Product not found...</h1></div>;
+    /* let objectInfo = <div style={{textAlign: "center"}}><h1>Product not found...</h1></div>;
     if(Object.entries(product).length !== 0)
     {
         objectInfo = (
@@ -81,11 +90,38 @@ const ProductDetail = (props) =>
                 </ul> 
             </div>
         );
+    } */
+
+    
+
+    let objectInfo = <div style={{textAlign: "center"}}><h1>Product not found...</h1></div>;
+    if(Object.entries(product).length !== 0)
+    {
+        let episodeId = 0;
+        const episodes = product.episode.map((clink,i) => {
+            episodeId = clink.substring(40, clink.length);
+            return (
+                <li key={i}>
+                    <Link to={'/episode/'+  episodeId}> Episode {episodeId} </Link>
+                </li>
+            );
+        });
+        
+        objectInfo = (
+            <div style={{textAlign: "center"}}>
+                <img src={product.image} alt={product.name}/>
+                <h1>{product.name}</h1>
+                <h2>{product.species}</h2>
+                <h3>{product.location.name}</h3>
+                <ul style={{listStyleType: 'none'}}>
+                    {episodes}
+                </ul> 
+            </div>
+        );
     }
 
     return (
         <>
-            <h1>Product detail</h1>
             {objectInfo}
         </>
     );

@@ -49,6 +49,8 @@
 }
 
 .ProductBottomDetails {
+    display: flex;
+    justify-content: center;
     overflow: hidden;
     border-top: 1px solid #eee;
     padding-top: 20px;
@@ -71,13 +73,18 @@
 
 .ProductLinks a {
     text-decoration: none;
-    display: inline-block;
     margin-left: 5px;
-    color: #e1e1e1;
+    color: #343a40;
     transition: 0.3s;
     font-size: 17px;
 }
 
-.ProductLinks a:hover {
-    color: #fbb72c;
+.ProductLinks a:hover{
+    color: #52b788;
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+    /* Other styles here */
 }
