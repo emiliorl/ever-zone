@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import classes from './ProductDetails.module.css';
 import {Link} from 'react-router-dom'
 
 const ProductDetail = (props) =>
@@ -99,7 +100,7 @@ const ProductDetail = (props) =>
     {
         let episodeId = 0;
         const episodes = product.episode.map((clink,i) => {
-            episodeId = clink.substring(40, clink.length);
+            episodeId = clink.substring(40, clink.length);  
             return (
                 <li key={i}>
                     <Link to={'/episode/'+  episodeId}> Episode {episodeId} </Link>
@@ -108,14 +109,22 @@ const ProductDetail = (props) =>
         });
         
         objectInfo = (
-            <div style={{textAlign: "center"}}>
-                <img src={product.image} alt={product.name}/>
-                <h1>{product.name}</h1>
-                <h2>{product.species}</h2>
-                <h3>{product.location.name}</h3>
-                <ul style={{listStyleType: 'none'}}>
-                    {episodes}
-                </ul> 
+            <div className={classes.containter}>
+                <div className={classes.mainContent}>
+                    <img src={product.image} alt={product.name}/>
+                    <div className={classes.mainDetails}>
+                        <h1>Action Figure: {product.name}</h1>
+                        <div className={classes.ProductPrice}>Q {Math.round(product.id * 9999)/100}</div>
+                        <h2>{product.species}</h2>
+                        <h3>{product.location.name}</h3>
+                    </div>
+                </div>
+                <h2 style={{textAlign: 'left', padding: '1%'}}>Epsiodes</h2>
+                <div>
+                    <ul className={classes.episodeList}>
+                        {episodes}
+                    </ul> 
+                </div>
             </div>
         );
     }

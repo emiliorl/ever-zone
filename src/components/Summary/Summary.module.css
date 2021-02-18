@@ -1,0 +1,9 @@
+.Summary{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 10%;
+    box-shadow: 0 2px 7px #dfdfdf;
+    background: #fafafa;
+    margin-top: 30px;
+}

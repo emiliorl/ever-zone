@@ -23,9 +23,9 @@ const product = (props) =>{
     ); */
 
     function addToCart(productId){
-        localStorage.setObj('item '+ productId, productId)
+        localStorage.setObj('item: ' + productId, productId)
 /*      localStorage.setObj('Quantity item '+ productId, productId)
- */    }
+ */  }
 
     Storage.prototype.setObj = function(key, obj) {
         return this.setItem(key, JSON.stringify(obj))
@@ -50,7 +50,7 @@ const product = (props) =>{
                 <img src={props.image} alt={props.name}/>
             </div>
             <h1>{props.name}</h1>
-            <h3>{props.species}</h3>
+            <h3>{props.location}</h3>
             <div className={classes.ProductBottomDetails}>
                 {/* <p>{props.opening_crawl}</p>
                 <ul style={{listStyleType: 'none'}}>
@@ -60,6 +60,7 @@ const product = (props) =>{
                     <div>
                         <img src={cartIcon} alt="" className={classes.icon} onClick={() => addToCart(props.id)} />
                     </div>
+                    <div className={classes.ProductPrice}>Q {Math.round(props.id * 9999)/100}</div>
                     <div>
                         <Link to={"/product/" + props.id}>Comprar</Link>
                     </div>

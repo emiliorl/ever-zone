@@ -33,7 +33,7 @@ const Sales = (props) =>{
                 name: product.name,
                 id: product.id,
                 image: product.image,
-                species: product.species,
+                location: product.location.name,
                 episode: [...product.episode]
             }));
             salesProductsSetState({salesProducts: [...productInfo]})
@@ -45,7 +45,7 @@ const Sales = (props) =>{
             key={m.id}
             id={m.id}
             name={m.name}
-            species={m.species}
+            location={m.location}
             image={m.image}
             episode={m.episode}
         />

@@ -1,9 +1,9 @@
 .ProductCard {
-    /*width: 380px;*/
-    /*position: relative;*/
+    display: flex;
+    justify-content: space-between;
     box-shadow: 0 2px 7px #dfdfdf;
     background: #fafafa;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 
@@ -22,15 +22,15 @@
 }
 
 .ProductDetails {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     padding: 30px;
-    max-width: 280px;
 }
 
 
 .ProductDetails h4 a {
     font-weight: 500;
-    display: block;
-    margin-Bottom: 18px;
     text-transform: uppercase;
     color: #363636;
     text-decoration: none;
@@ -44,25 +44,18 @@
 .ProductDetails p {
     font-size: 15px;
     line-height: 22px;
-    margin-Bottom: 18px;
     color: #999;
 }
 
 .ProductBottomDetails {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    overflow: hidden;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
-.Product-Bottom-Details div {
-    float: left;
-    width: 50%;
 }
 
 .ProductPrice {
     font-size: 18px;
+    padding-top: 10%;
     color: #fbb72c;
     font-weight: 600;
 }
@@ -81,16 +74,4 @@
 
 .ProductLinks a:hover{
     color: #52b788;
-}
-
-.icon {
-    height: 40px;
-    width: 40px;
-    /* Other styles here */
-}
-
-.icon :hover {
-    height: 40px;
-    width: 40px;
-    /* Other styles here */
 }

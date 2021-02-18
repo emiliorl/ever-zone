@@ -1,0 +1,19 @@
+.Cart{
+    margin: 0px 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.CartItems{
+    display: flex;
+    margin: 2%;
+    flex-direction: column;
+    flex-grow: 3;
+}
+
+.Cart Summary{
+    display: flex;
+    margin: 2%;
+    flex-grow: 2;
+}
